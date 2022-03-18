@@ -1,8 +1,13 @@
-SRCS	=	main.cpp
+SRCS	=	main.cpp \
+			Contact.class.cpp \
+			PhoneBook.class.cpp \
+
+HEADERS	=	Contact.class.hpp \
+			PhoneBook.class.hpp \
 
 OBJS	=	${SRCS:%.cpp=./.build/%.o}
 
-DEP		=	${OBJS:.o=.d}
+DEP		=	${OBJS:./.build/%.o=./.build/%.d}
 
 NAME	=	phonebook
 
@@ -28,7 +33,7 @@ all:
 		@mkdir -p .build
 		@make ${NAME} --no-print-directory
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} ${DEP}
 		@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 		@printf "${B_GREEN}==>{${NAME}} LINKED SUCCESFULLY<==${NONE}\n"
 
@@ -43,6 +48,6 @@ fclean:	clean
 
 re:		fclean all
 
--include ${DEP}
+# -include ${DEP}
 
 .PHONY:	all clean fclean re

@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Contact.class.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 14:52:17 by pleveque          #+#    #+#             */
-/*   Updated: 2022/03/18 17:13:35 by pleveque         ###   ########.fr       */
+/*   Created: 2022/03/18 14:50:33 by pleveque          #+#    #+#             */
+/*   Updated: 2022/03/18 16:55:19 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CONTACT_CLASS_H
+#   define CONTACT_CLASS_H
+
+
 #include <iostream>
 #include <string>
-#include "Contact.class.hpp"
-#include "PhoneBook.class.hpp"
-#include <iomanip>
 
-int	main() {
+class Contact {
+    
+    private:
+        std::string firstName;
+        std::string lastName;
+        std::string nickname;
+        std::string phoneNumber;
+        std::string secret;
 
-	PhoneBook pb;
-	std::string cmd = "";
+    public:
+    
+        Contact( void );
+        ~Contact( void );
+        void update( void );
+        void print( void );
+        void smallPrint( int index );
+};
 
-	std::cout << "Hey, enter your command: ";
-	while (std::getline(std::cin, cmd))
-	{
 
-		if (cmd == "ADD")
-			pb.addContact();
-		else if (cmd == "SEARCH")
-			pb.selectContact();
-		else if (cmd == "EXIT")
-			return (0);
-		std::cout << "Enter your command: ";
-	}
-	return (0);
-}
+#endif
