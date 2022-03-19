@@ -3,11 +3,9 @@ SRCS	=	tests.cpp \
 
 OBJS	=	${SRCS:%.cpp=./.build/%.o}
 
-DEP		=	${OBJS:./.build/%.o=./.build/%.d}
-
 NAME	=	account
 
-CFLAGS	=	-MMD -Wall -Wextra -Werror  -g -I.
+CFLAGS	=	-Wall -Wextra -Werror -I. -std=c++98
 
 RM		=	rm -rf
 
@@ -29,12 +27,12 @@ all:
 		@mkdir -p .build
 		@make ${NAME} --no-print-directory
 
-${NAME}:	${OBJS} ${DEP}
+${NAME}:	${OBJS}
 		@${CC} ${CFLAGS} ${OBJS} -o ${NAME}
 		@printf "${B_GREEN}==>{${NAME}} LINKED SUCCESFULLY<==${NONE}\n"
 
 clean:
-		@${RM} ${DEP}
+		@${RM}
 		@${RM} ./.build
 		@printf "${B_RED}XX clean XX\n${NONE}"
 
@@ -43,7 +41,5 @@ fclean:	clean
 		@printf "${B_RED}XX fclean XX\n${NONE}"
 
 re:		fclean all
-
-# -include ${DEP}
 
 .PHONY:	all clean fclean re
