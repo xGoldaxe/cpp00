@@ -6,20 +6,22 @@
 /*   By: pleveque <pleveque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 14:52:17 by pleveque          #+#    #+#             */
-/*   Updated: 2022/03/17 18:42:37 by pleveque         ###   ########.fr       */
+/*   Updated: 2022/03/19 13:45:07 by pleveque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iostream>
+#include <string>
 
 int	print_upper(char *str)
 {
-	const std::string s = str;
+	std::string s = str;
 
-	for (auto it = s.cbegin() ; it != s.cend(); ++it) {
-		std::cout << char(std::toupper(*it));
+  	for ( std::string::iterator it=s.begin(); it!=s.end(); ++it) {
+   		std::cout << char(std::toupper(*it));
 	}
-	std::cout << std::endl;
+
 	return (0);
 }
 

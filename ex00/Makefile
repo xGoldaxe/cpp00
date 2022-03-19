@@ -6,7 +6,7 @@ DEP		=	${OBJS:.o=.d}
 
 NAME	=	megaphone
 
-CFLAGS	=	-MMD -Wall -Wextra -Werror  -g -I.
+CFLAGS	=	-Wall -Wextra -Werror -I. -std=c++98
 
 RM		=	rm -rf
 
@@ -43,6 +43,5 @@ fclean:	clean
 
 re:		fclean all
 
--include ${DEP}
 
 .PHONY:	all clean fclean re
